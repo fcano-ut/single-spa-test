@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { mountRootParcel } from 'single-spa';
+import 'systemjs';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,14 @@ export class AppComponent {
 
   public mountRootParcel = mountRootParcel;
 
+  public testCondition = false;
+
   ngOnInit() {
     // @ts-ignore
-    this.config = () => import('reactMicrofrontend/Component');
+    this.config = () => System.import('http://localhost:8080/test-react-microfrontend.js');
+
+    window.setTimeout(() => {
+      this.testCondition = true;
+    }, 100);
   }
 }
