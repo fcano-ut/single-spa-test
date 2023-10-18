@@ -11,21 +11,21 @@ export class AppComponent {
   title = 'angular-host';
 
   public customProps: any = {
-    name: "NAME (passed as prop)"
+    message: "I'm passing a prop on mount!"
   };
 
   public config: any;
 
   public mountRootParcel = mountRootParcel;
 
-  public testCondition = false;
-
   ngOnInit() {
     // @ts-ignore
     this.config = () => System.import('http://localhost:8080/test-react-microfrontend.js');
 
     window.setTimeout(() => {
-      this.testCondition = true;
+      this.customProps = {
+        name: "I'm updating props!",
+      };
     }, 100);
   }
 }
