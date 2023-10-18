@@ -24,7 +24,7 @@ export class AppComponent {
 
     window.setTimeout(() => {
       this.customProps = {
-        name: "I'm updating props!",
+        message: "I'm updating props!",
       };
     }, 100);
   }
